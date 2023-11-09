@@ -14,5 +14,5 @@ Projects were edited using several tools, including Python, Javascript, Typescri
 
 # Reference
 
-
-![Forage Program Link](https://www.theforage.com/simulations/jpmorgan/software-engineering-btjx?ref=6afoFnBXduZLXmtvb)
+Program Link:
+https://www.theforage.com/simulations/jpmorgan/software-engineering-btjx?ref=6afoFnBXduZLXmtvb
