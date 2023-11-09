@@ -1,0 +1,98 @@
+Subject: [PATCH] Task 2 Completed
+---
+Index: Task 2/src/App.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Task 2/src/App.tsx b/Task 2/src/App.tsx
+--- a/Task 2/src/App.tsx	(revision cd4797eb2509f70eef365b8025733fde9ccb59ad)
++++ b/Task 2/src/App.tsx	(date 1699506159059)
+@@ -2,12 +2,14 @@
+ import DataStreamer, { ServerRespond } from './DataStreamer';
+ import Graph from './Graph';
+ import './App.css';
++import {setInterval} from "timers";
+ 
+ /**
+  * State declaration for <App />
+  */
+ interface IState {
+   data: ServerRespond[],
++  showGraph: boolean,
+ }
+ 
+ /**
+@@ -22,6 +24,7 @@
+       // data saves the server responds.
+       // We use this state to parse data down to the child element (Graph) as element property
+       data: [],
++      showGraph: false,
+     };
+   }
+ 
+@@ -29,18 +32,29 @@
+    * Render Graph react component with state.data parse as property data
+    */
+   renderGraph() {
+-    return (<Graph data={this.state.data}/>)
++    if (this.state.showGraph) {
++      return (<Graph data={this.state.data}/>)
++    }
+   }
+ 
+   /**
+    * Get new data from server and update the state with the new data
+    */
+   getDataFromServer() {
+-    DataStreamer.getData((serverResponds: ServerRespond[]) => {
+-      // Update the state by creating a new array of data that consists of
+-      // Previous data in the state and the new data from server
+-      this.setState({ data: [...this.state.data, ...serverResponds] });
+-    });
++    let x=0;
++    const interval = setInterval (() =>{
++      DataStreamer.getData((serverResponds: ServerRespond[]) => {
++        // Update the state by creating a new array of data that consists of
++        this.setState({
++          data: serverResponds,
++          showGraph: true,
++        });
++      });
++      x++;
++      if (x>1000){
++        clearInterval(interval);
++      }
++    }, 100);
+   }
+ 
+   /**
+Index: Task 2/src/Graph.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Task 2/src/Graph.tsx b/Task 2/src/Graph.tsx
+--- a/Task 2/src/Graph.tsx	(revision cd4797eb2509f70eef365b8025733fde9ccb59ad)
++++ b/Task 2/src/Graph.tsx	(date 1699507625571)
+@@ -14,7 +14,7 @@
+  * Perspective library adds load to HTMLElement prototype.
+  * This interface acts as a wrapper for Typescript compiler.
+  */
+-interface PerspectiveViewerElement {
++interface PerspectiveViewerElement extends HTMLElement{
+   load: (table: Table) => void,
+ }
+ 
+@@ -49,6 +49,11 @@
+ 
+       // Add more Perspective configurations here.
+       elem.load(this.table);
++      elem.setAttribute('view', 'y_line');
++      elem.setAttribute('column-pivots', '["stock"]');
++      elem.setAttribute('row-pivots','["timestamp"]');
++      elem.setAttribute('columns', '["top_ask_price"]');
++      elem.setAttribute('aggregates', '{"stock": "distinct count", "top_ask_price":"avg", "top_bid_price":"avg", "timestamp":"distinct count"}');
+     }
+   }
+ 
