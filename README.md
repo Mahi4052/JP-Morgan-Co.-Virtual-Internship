@@ -12,6 +12,12 @@ This Virtual Experience consists of 3 tasks:
 
 Project is edited using several tools, including Python, Javascript, Typescript, React, HTML, git, NodeJS, nvm, and Perspective (JP Morgan's open source data visualization tool).
 
+# Final Result of Project
+Developed a live graph presenting a data feed for traders to monitor stock ratios with respect to timestamps, incorporating upper and lower bounds, along with trigger alerts for stocks. 
+
+
+![Output](https://github.com/Mahi4052/JP-Morgan-Virtual-Experinece/assets/95848665/902065f9-3e7b-4bbb-a3e7-945a72ecead5)
+
 # Reference
 
 Program Link:
