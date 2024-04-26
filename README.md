@@ -1,4 +1,4 @@
-# Forage: JP-Morgan-Software-Engineering-Virtual-Experinece
+# Forage: JP-Morgan-and-Co.-Software-Engineering-Virtual-Internship
 
 # Certificate of Completion
 
