@@ -10,7 +10,7 @@ This Virtual Experience consists of 3 tasks:
 * Task 2: Use JPMorgan Chase frameworks and tools
 * Task 3: Display data visually for traders
 
-Project is edited using several tools, including Python, Javascript, Typescript, React, HTML, git, NodeJS, nvm, and Perspective (JP Morgan's open source data visualization tool).
+Project is edited using several tools, including Python, Javascript, React, HTML, git and Perspective (JP Morgan's open source data visualization tool).
 
 # Final Result of Project
 Developed a live graph presenting a data feed for traders to monitor stock ratios with respect to timestamps, incorporating upper and lower bounds, along with trigger alerts for stocks. 
